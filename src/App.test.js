@@ -1,9 +1,29 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import Enzyme, { shallow } from 'enzyme';
+import EnzymeAdapter from 'enzyme-adapter-react-16';
+
+Enzyme.configure({ adapter: new EnzymeAdapter() })
+
 import App from './App';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+test('renders without crashing', () => {
+  const wrapper = shallow(<App />);
+  const appComponent = wrapper.find("[data-test='component-app']")
+  expect(appComponent.length).toBe(1)
 });
+
+test('renders increment button', () => {
+
+})
+
+test('renders counter display', () => {
+  
+})
+
+test('test counter starts at 0', () => {
+  
+})
+
+test('clicking butoon increments counter display', () => {
+  
+})
